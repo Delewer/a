@@ -23,6 +23,7 @@ body {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     overflow-y: auto;
     z-index: 20;
+    transition: transform 0.3s ease-in-out;
 }
 
 .main-content {
@@ -285,4 +286,49 @@ main {
 
 .hidden {
     display: none;
+}
+
+/* --- MOBILE RESPONSIVE STYLES --- */
+@media (max-width: 767px) { /* Corresponds to md: breakpoint in Tailwind */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 40; /* Ensure sidebar is on top */
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+    
+    .header {
+        position: relative;
+        z-index: 30;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+    
+    main {
+        padding: 1rem; /* Reduced padding on mobile */
+    }
+
+    /* Overlay for when the menu is open */
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 39; /* Below sidebar, above content */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    .sidebar-overlay.is-open {
+        opacity: 1;
+        visibility: visible;
+    }
 }

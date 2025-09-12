@@ -731,5 +731,26 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.addEventListener('click', (e) => {
         if(e.target === modal) hideModal();
     });
-});
 
+    // --- MOBILE MENU TOGGLE LOGIC ---
+    const menuToggleBtn = document.getElementById('menu-toggle-btn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    const toggleMenu = () => {
+        sidebar.classList.toggle('is-open');
+        overlay.classList.toggle('is-open');
+    };
+
+    menuToggleBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // Close sidebar when a nav link is clicked on mobile
+    sidebar.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) { // Only affects mobile view
+                toggleMenu();
+            }
+        });
+    });
+});

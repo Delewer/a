@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberCare for Businesses</title>
     
-    <!-- External Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <!-- Local Files -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
     <div class="main-layout">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="flex items-center justify-center gap-3 p-4 border-b">
                 <span class="bg-indigo-600 text-white p-3 rounded-lg"><i class="fa-solid fa-shield-halved fa-lg"></i></span>
                 <h1 class="text-2xl font-bold text-gray-900">CyberCare</h1>
@@ -43,11 +42,13 @@
             </nav>
         </aside>
 
-        <!-- Main Content Area -->
         <div class="main-content">
             <header class="header">
-                <div class="flex items-center justify-between p-4">
-                    <h2 id="page-title" class="text-xl font-bold text-gray-700"></h2>
+                 <div class="flex items-center justify-between p-4">
+                     <button id="menu-toggle-btn" class="md:hidden text-gray-700 text-2xl focus:outline-none">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <h2 id="page-title" class="text-xl font-bold text-gray-700 mx-auto md:mx-0"></h2>
                     <div id="lang-switcher" class="flex items-center gap-4">
                         <button class="lang-btn" data-lang="ro">RO</button>
                         <button class="lang-btn" data-lang="ru">RU</button>
@@ -56,7 +57,6 @@
                 </div>
             </header>
             <main>
-                <!-- Dashboard Page -->
                 <section id="dashboard" class="page-section">
                     <h2 class="text-3xl font-bold mb-6" data-translate="dashboard_title"></h2>
                     <div class="feature-card">
@@ -72,7 +72,6 @@
                     <div id="scan-results-container" class="mt-8"></div>
                 </section>
 
-                <!-- Checklist Page -->
                 <section id="checklist" class="page-section">
                     <h2 class="text-3xl font-bold mb-2" data-translate="checklist_title"></h2>
                     <p class="text-gray-600 mb-6" data-translate="checklist_subtitle"></p>
@@ -85,7 +84,6 @@
                     </div>
                 </section>
 
-                <!-- Reporting Page -->
                 <section id="reporting" class="page-section">
                     <h2 class="text-3xl font-bold mb-2" data-translate="reporting_title"></h2>
                     <p class="text-gray-600 mb-6" data-translate="reporting_subtitle"></p>
@@ -104,14 +102,12 @@
                     </div>
                 </section>
                 
-                <!-- Marketplace Page -->
                 <section id="marketplace" class="page-section">
                     <h2 class="text-3xl font-bold mb-2" data-translate="marketplace_title"></h2>
                     <p class="text-gray-600 mb-6" data-translate="marketplace_subtitle"></p>
                     <div id="marketplace-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
                 </section>
 
-                <!-- Risk Calculator Page -->
                 <section id="risk_calculator" class="page-section">
                     <h2 class="text-3xl font-bold mb-2" data-translate="risk_calculator_title"></h2>
                     <p class="text-gray-600 mb-6" data-translate="risk_calculator_subtitle"></p>
@@ -130,7 +126,6 @@
                     </div>
                 </section>
 
-                <!-- Vendor Chain Page -->
                 <section id="vendor_chain" class="page-section">
                     <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
                         <div><h2 class="text-3xl font-bold" data-translate="vendor_chain_title"></h2><p class="text-gray-600" data-translate="vendor_chain_subtitle"></p></div>
@@ -144,21 +139,18 @@
                     </div>
                 </section>
 
-                <!-- Industry Shield Page -->
                 <section id="industry_shield" class="page-section">
                     <h2 class="text-3xl font-bold mb-2" data-translate="industry_shield_title"></h2>
                     <p class="text-gray-600 mb-6" data-translate="industry_subtitle"></p>
                     <div id="shield-alerts-container" class="space-y-4"></div>
                 </section>
 
-                <!-- Training Page -->
                 <section id="training" class="page-section">
                      <h2 class="text-3xl font-bold mb-2" data-translate="training_title"></h2>
                     <p class="text-gray-600 mb-6" data-translate="training_subtitle"></p>
                     <div id="training-card" class="feature-card max-w-2xl mx-auto"></div>
                 </section>
                 
-                <!-- Onboarding Page -->
                 <section id="onboarding" class="page-section">
                     <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
                         <div><h2 class="text-3xl font-bold" data-translate="onboarding_title"></h2><p class="text-gray-600" data-translate="onboarding_subtitle"></p></div>
@@ -172,14 +164,12 @@
                     </div>
                 </section>
                 
-                <!-- Policy Generator Page -->
                 <section id="policy_generator" class="page-section">
                     <h2 class="text-3xl font-bold mb-2" data-translate="policy_generator_title"></h2>
                     <p class="text-gray-600 mb-6" data-translate="policy_generator_subtitle"></p>
                     <div id="policy-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
                 </section>
 
-                <!-- Incident Drill Page -->
                 <section id="incident_drill" class="page-section">
                      <h2 class="text-3xl font-bold mb-2" data-translate="incident_drill_title"></h2>
                     <p class="text-gray-600 mb-6" data-translate="incident_drill_subtitle"></p>
@@ -190,7 +180,6 @@
         </div>
     </div>
 
-    <!-- Modal Template -->
     <div id="modal" class="modal-overlay">
         <div class="modal-container">
             <div class="flex justify-between items-center p-4 border-b"><h3 id="modal-title" class="text-xl font-bold"></h3><button id="modal-close-btn" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button></div>
@@ -198,8 +187,6 @@
         </div>
     </div>
 
-    <!-- Main Application Logic -->
     <script src="js/main.js"></script>
 </body>
 </html>
-
