@@ -59,6 +59,10 @@
             <main>
                 <section id="dashboard" class="page-section">
                     <h2 class="text-3xl font-bold mb-6" data-translate="dashboard_title"></h2>
+                    <div class="disclaimer-box mb-6">
+                        <p class="font-semibold"><i class="fa-solid fa-info-circle"></i> <span data-translate="disclaimer_title"></span></p>
+                        <p class="text-sm" data-translate="disclaimer_text"></p>
+                    </div>
                     <div class="feature-card">
                         <p class="text-gray-600 mb-4" data-translate="dashboard_subtitle"></p>
                         <div class="flex flex-col sm:flex-row gap-2">
@@ -89,8 +93,17 @@
                     <p class="text-gray-600 mb-6" data-translate="reporting_subtitle"></p>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div class="lg:col-span-2 feature-card">
-                            <div class="border-b border-gray-200 mb-6"><nav id="report-stages" class="flex -mb-px space-x-6"></nav></div>
-                            <form id="incident-report-form" class="space-y-4"></form>
+                            <div class="mb-6">
+                                <h3 class="font-bold text-lg mb-3" data-translate="incident_timeline_title"></h3>
+                                <div id="incident-timeline" class="timeline-container"></div>
+                            </div>
+                            <div class="border-t pt-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h3 class="font-bold text-lg" data-translate="incident_form_title"></h3>
+                                    <button id="export-btn" class="btn btn-secondary"><i class="fa-solid fa-file-export"></i> <span data-translate="export_json_button"></span></button>
+                                </div>
+                                <form id="incident-report-form" class="space-y-4"></form>
+                            </div>
                         </div>
                         <div class="feature-card">
                             <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-robot text-indigo-500"></i><span data-translate="smart_reporter_title"></span></h3>
