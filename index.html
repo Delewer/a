@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCare for Businesses</title>
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Local Files -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="flex items-center justify-center gap-3 p-4 border-b">
+                <span class="bg-indigo-600 text-white p-3 rounded-lg"><i class="fa-solid fa-shield-halved fa-lg"></i></span>
+                <h1 class="text-2xl font-bold text-gray-900">CyberCare</h1>
+            </div>
+            <nav class="mt-4">
+                <a href="#dashboard" class="nav-link" data-nav="dashboard"><i class="fa-solid fa-chart-pie w-6 text-center"></i><span data-translate="nav_dashboard"></span></a>
+                <a href="#checklist" class="nav-link" data-nav="checklist"><i class="fa-solid fa-list-check w-6 text-center"></i><span data-translate="nav_checklist"></span></a>
+                <a href="#reporting" class="nav-link" data-nav="reporting"><i class="fa-solid fa-bullhorn w-6 text-center"></i><span data-translate="nav_reporting"></span></a>
+                
+                <p class="px-4 mt-4 mb-2 text-xs font-semibold text-gray-400 uppercase" data-translate="nav_killer_features"></p>
+                <a href="#marketplace" class="nav-link" data-nav="marketplace"><i class="fa-solid fa-store w-6 text-center"></i><span data-translate="nav_marketplace"></span></a>
+                <a href="#risk_calculator" class="nav-link" data-nav="risk_calculator"><i class="fa-solid fa-calculator w-6 text-center"></i><span data-translate="nav_risk_calculator"></span></a>
+                <a href="#vendor_chain" class="nav-link" data-nav="vendor_chain"><i class="fa-solid fa-link w-6 text-center"></i><span data-translate="nav_vendor_chain"></span></a>
+                <a href="#industry_shield" class="nav-link" data-nav="industry_shield"><i class="fa-solid fa-users-viewfinder w-6 text-center"></i><span data-translate="nav_industry_shield"></span></a>
+                <a href="#training" class="nav-link" data-nav="training"><i class="fa-solid fa-graduation-cap w-6 text-center"></i><span data-translate="nav_training"></span></a>
+
+                <p class="px-4 mt-4 mb-2 text-xs font-semibold text-gray-400 uppercase" data-translate="nav_proactive_defense"></p>
+                <a href="#onboarding" class="nav-link" data-nav="onboarding"><i class="fa-solid fa-user-check w-6 text-center"></i><span data-translate="nav_onboarding"></span></a>
+                <a href="#policy_generator" class="nav-link" data-nav="policy_generator"><i class="fa-solid fa-file-alt w-6 text-center"></i><span data-translate="nav_policy_generator"></span></a>
+                <a href="#incident_drill" class="nav-link" data-nav="incident_drill"><i class="fa-solid fa-fire-extinguisher w-6 text-center"></i><span data-translate="nav_incident_drill"></span></a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <header class="header">
+                <div class="flex items-center justify-between p-4">
+                    <h2 id="page-title" class="text-xl font-bold text-gray-700"></h2>
+                    <div id="lang-switcher" class="flex items-center gap-4">
+                        <button class="lang-btn" data-lang="ro">RO</button>
+                        <button class="lang-btn" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <!-- Dashboard Page -->
+                <section id="dashboard" class="page-section">
+                    <h2 class="text-3xl font-bold mb-6" data-translate="dashboard_title"></h2>
+                    <div class="feature-card">
+                        <p class="text-gray-600 mb-4" data-translate="dashboard_subtitle"></p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input id="scan-target" type="text" placeholder="exemplu.md" class="input-field flex-grow">
+                            <button id="start-scan-btn" class="btn btn-primary w-full sm:w-auto">
+                                <i class="fa-solid fa-magnifying-glass"></i><span data-translate="dashboard_scan_button"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="loader-container" class="mt-8 hidden text-center"><div class="loader inline-block"></div><p class="mt-2 text-gray-600" data-translate="scan_in_progress"></p></div>
+                    <div id="scan-results-container" class="mt-8"></div>
+                </section>
+
+                <!-- Checklist Page -->
+                <section id="checklist" class="page-section">
+                    <h2 class="text-3xl font-bold mb-2" data-translate="checklist_title"></h2>
+                    <p class="text-gray-600 mb-6" data-translate="checklist_subtitle"></p>
+                    <div class="feature-card">
+                        <div class="mb-6"><h4 class="font-semibold mb-2" data-translate="checklist_progress"></h4>
+                            <div class="w-full bg-gray-200 rounded-full h-4"><div id="checklist-progress-bar" class="bg-indigo-600 h-4 rounded-full transition-all duration-500" style="width: 0%"></div></div>
+                            <p id="checklist-progress-text" class="text-center font-semibold mt-1">0%</p>
+                        </div>
+                        <form id="compliance-form" class="space-y-6"></form>
+                    </div>
+                </section>
+
+                <!-- Reporting Page -->
+                <section id="reporting" class="page-section">
+                    <h2 class="text-3xl font-bold mb-2" data-translate="reporting_title"></h2>
+                    <p class="text-gray-600 mb-6" data-translate="reporting_subtitle"></p>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="lg:col-span-2 feature-card">
+                            <div class="border-b border-gray-200 mb-6"><nav id="report-stages" class="flex -mb-px space-x-6"></nav></div>
+                            <form id="incident-report-form" class="space-y-4"></form>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="text-xl font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-robot text-indigo-500"></i><span data-translate="smart_reporter_title"></span></h3>
+                            <p class="text-gray-600 mb-4" data-translate="smart_reporter_desc"></p>
+                            <textarea id="ai-helper-input" rows="4" class="input-field" data-translate-placeholder="incident_placeholder"></textarea>
+                            <button id="ai-helper-btn" class="mt-3 w-full btn btn-primary"><span data-translate="get_ai_help"></span></button>
+                            <div id="ai-suggestion-box" class="mt-4 hidden"><h4 class="font-semibold" data-translate="ai_suggestion"></h4><p class="text-sm bg-gray-100 p-3 rounded-md mt-2"></p></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Marketplace Page -->
+                <section id="marketplace" class="page-section">
+                    <h2 class="text-3xl font-bold mb-2" data-translate="marketplace_title"></h2>
+                    <p class="text-gray-600 mb-6" data-translate="marketplace_subtitle"></p>
+                    <div id="marketplace-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </section>
+
+                <!-- Risk Calculator Page -->
+                <section id="risk_calculator" class="page-section">
+                    <h2 class="text-3xl font-bold mb-2" data-translate="risk_calculator_title"></h2>
+                    <p class="text-gray-600 mb-6" data-translate="risk_calculator_subtitle"></p>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="feature-card">
+                            <form id="risk-form" class="space-y-4">
+                                <div><label for="industry-select" class="font-medium" data-translate="industry"></label><select id="industry-select" class="input-field mt-1"></select></div>
+                                <div><label for="employees-input" class="font-medium" data-translate="employees"></label><input type="number" id="employees-input" class="input-field mt-1" value="25"></div>
+                                <div><label for="turnover-input" class="font-medium" data-translate="turnover"></label><input type="number" id="turnover-input" class="input-field mt-1" value="5000000"></div>
+                                <button type="submit" class="btn btn-primary w-full"><span data-translate="calculate_risk"></span></button>
+                            </form>
+                        </div>
+                        <div id="risk-results-container" class="feature-card flex flex-col justify-center items-center text-center hidden">
+                             <div id="risk-results"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Vendor Chain Page -->
+                <section id="vendor_chain" class="page-section">
+                    <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+                        <div><h2 class="text-3xl font-bold" data-translate="vendor_chain_title"></h2><p class="text-gray-600" data-translate="vendor_chain_subtitle"></p></div>
+                        <button id="invite-vendor-btn" class="btn btn-primary"><i class="fa-solid fa-plus"></i> <span data-translate="invite_vendor"></span></button>
+                    </div>
+                    <div class="feature-card">
+                        <table class="w-full">
+                            <thead><tr class="border-b"><th class="text-left p-3" data-translate="vendor_name"></th><th class="text-left p-3" data-translate="vendor_status"></th></tr></thead>
+                            <tbody id="vendor-list"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Industry Shield Page -->
+                <section id="industry_shield" class="page-section">
+                    <h2 class="text-3xl font-bold mb-2" data-translate="industry_shield_title"></h2>
+                    <p class="text-gray-600 mb-6" data-translate="industry_subtitle"></p>
+                    <div id="shield-alerts-container" class="space-y-4"></div>
+                </section>
+
+                <!-- Training Page -->
+                <section id="training" class="page-section">
+                     <h2 class="text-3xl font-bold mb-2" data-translate="training_title"></h2>
+                    <p class="text-gray-600 mb-6" data-translate="training_subtitle"></p>
+                    <div id="training-card" class="feature-card max-w-2xl mx-auto"></div>
+                </section>
+                
+                <!-- Onboarding Page -->
+                <section id="onboarding" class="page-section">
+                    <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+                        <div><h2 class="text-3xl font-bold" data-translate="onboarding_title"></h2><p class="text-gray-600" data-translate="onboarding_subtitle"></p></div>
+                        <button id="invite-employee-btn" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> <span data-translate="onboarding_invite"></span></button>
+                    </div>
+                    <div class="feature-card">
+                        <table class="w-full">
+                            <thead><tr class="border-b"><th class="text-left p-3" data-translate="onboarding_employee"></th><th class="text-left p-3" data-translate="onboarding_status"></th><th class="text-left p-3" data-translate="onboarding_date"></th></tr></thead>
+                            <tbody id="employee-list"></tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Policy Generator Page -->
+                <section id="policy_generator" class="page-section">
+                    <h2 class="text-3xl font-bold mb-2" data-translate="policy_generator_title"></h2>
+                    <p class="text-gray-600 mb-6" data-translate="policy_generator_subtitle"></p>
+                    <div id="policy-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </section>
+
+                <!-- Incident Drill Page -->
+                <section id="incident_drill" class="page-section">
+                     <h2 class="text-3xl font-bold mb-2" data-translate="incident_drill_title"></h2>
+                    <p class="text-gray-600 mb-6" data-translate="incident_drill_subtitle"></p>
+                    <div id="drill-container" class="feature-card max-w-3xl mx-auto"></div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Template -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="flex justify-between items-center p-4 border-b"><h3 id="modal-title" class="text-xl font-bold"></h3><button id="modal-close-btn" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button></div>
+            <div id="modal-content" class="p-6 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <!-- Main Application Logic -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+
