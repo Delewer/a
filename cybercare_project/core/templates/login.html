@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bun venit la CyberCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4f46e5; --primary-color-light: #eef2ff;
+            --text-color-dark: #111827; --text-color-medium: #4b5563;
+            --text-color-light: #9ca3af; --background-color: #f8fafc;
+            --border-color: #e5e7eb;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif; color: var(--text-color-medium);
+            background-color: #ffffff; -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .hidden { display: none; }
+        .auth-container { display: flex; min-height: 100vh; width: 100%; }
+        .info-panel {
+            flex: 1; background-color: #4f46e5; color: #ffffff;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; padding: 3rem; position: relative; overflow: hidden;
+        }
+        .info-panel::before {
+            content: ''; position: absolute; top: 50%; left: 0;
+            width: 200%; height: 200%; background-color: #ffffff;
+            border-radius: 45%; transform: translate(-65%, -50%); z-index: 1;
+        }
+        .info-content {
+            position: relative; z-index: 2; text-align: center; max-width: 350px;
+        }
+        .info-content h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; }
+        .info-content p { font-size: 1rem; opacity: 0.8; line-height: 1.6; margin-bottom: 2rem; }
+        .btn-outline {
+            background-color: transparent; border: 2px solid #ffffff; color: #ffffff;
+            padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s ease-in-out; font-size: 0.875rem;
+        }
+        .btn-outline:hover { background-color: #ffffff; color: #4f46e5; }
+        .auth-illustration {
+            position: relative; z-index: 2; width: 100%; max-width: 400px; margin-top: 3rem;
+        }
+        .form-panel {
+            flex: 1.2; display: flex; align-items: center; justify-content: flex-start;
+            padding: 3rem 5rem; position: relative; z-index: 2;
+        }
+        .form-wrapper { width: 100%; max-width: 400px; }
+        .form-main-title { font-size: 2.5rem; font-weight: 700; color: var(--text-color-dark); margin-bottom: 2.5rem; }
+        .space-y-4 > *:not([hidden]) ~ *:not([hidden]) { margin-top: 1rem; }
+        .space-y-5 > *:not([hidden]) ~ *:not([hidden]) { margin-top: 1.25rem; }
+        .input-wrapper { position: relative; }
+        .input-icon {
+            position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+            color: var(--text-color-light); font-size: 0.875rem;
+        }
+        .input-field-auth {
+            width: 100%; padding: 0.875rem 1rem 0.875rem 2.75rem; border: none;
+            border-radius: 0.75rem; background-color: #f3f4f6; color: var(--text-color-dark);
+            font-size: 1rem; transition: all 0.2s ease-in-out;
+        }
+        .input-field-auth:focus {
+            outline: none; background-color: #ffffff;
+            box-shadow: 0 0 0 3px var(--primary-color-light);
+        }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            padding: 0.875rem 1.25rem; font-weight: 600; border-radius: 0.75rem;
+            transition: all 0.2s ease-in-out; cursor: pointer; border: 1px solid transparent;
+            width: 100%; font-size: 1rem;
+        }
+        .btn-primary {
+            background-color: var(--primary-color); color: #ffffff;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #4338ca; transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3);
+        }
+        .btn-primary.disabled-btn {
+            background-color: #a5b4fc; cursor: not-allowed;
+            transform: translateY(0); box-shadow: none;
+        }
+        .form-field-wrapper { margin-bottom: 1.25rem; }
+        .form-field-wrapper > label { display: none; }
+        #registrationForm > p { margin: 0; }
+        .messages { margin-top: 1.5rem; }
+        .alert {
+            padding: 0.75rem 1rem; border-radius: 0.5rem; text-align: center;
+            font-size: 0.875rem; font-weight: 500;
+        }
+        .alert-error { background-color: #fee2e2; color: #991b1b; }
+        .alert-success { background-color: #d1fae5; color: #065f46; }
+        .file-upload-wrapper { margin-top: 1.25rem; }
+        .file-upload-label {
+            display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+            width: 100%; padding: 0.75rem; border: 2px dashed var(--border-color);
+            border-radius: 0.5rem; cursor: pointer; transition: all 0.2s ease-in-out;
+            background-color: #f9fafb; font-size: 0.875rem;
+        }
+        .file-upload-label:hover {
+            border-color: var(--primary-color); background-color: var(--primary-color-light);
+            color: var(--primary-color);
+        }
+        #file-upload-progress-container { margin-top: 0.75rem; }
+        #file-name {
+            display: block; font-size: 0.875rem; color: var(--text-color-medium);
+            margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .progress-bar-bg {
+            width: 100%; background-color: var(--border-color);
+            border-radius: 99px; height: 10px;
+        }
+        .progress-bar {
+            width: 0%; height: 100%; background-color: #10b981; border-radius: 99px;
+            transition: width 0.2s ease-out, background-color 0.3s; font-size: 8px;
+            color: white; text-align: center; font-weight: 600;
+        }
+        @media (max-width: 1024px) {
+            .info-panel { display: none; }
+            .form-panel { flex: 1; justify-content: center; padding: 2rem; }
+        }
+    </style>
+</head>
+<body data-show-register="{{ show_register|yesno:'true,false' }}">
+
+    <div class="auth-container">
+        <div class="info-panel">
+            <div class="info-content">
+                <h2 id="info-title">Sunteți nou aici?</h2>
+                <p id="info-text">Creați un cont pentru a începe călătoria dvs. spre conformitate și a vă proteja afacerea.</p>
+                <button id="switch-btn" class="btn-outline">Înregistrare</button>
+            </div>
+            <img src="{% static 'images/auth_illustration.svg' %}" alt="Startup Illustration" class="auth-illustration">
+        </div>
+
+        <div class="form-panel">
+            <div class="form-wrapper">
+                <div id="login-form-container">
+                    <h1 class="form-main-title">Autentificare</h1>
+                    <form method="post" action="{% url 'login' %}" class="space-y-5">
+                        {% csrf_token %}
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user input-icon"></i>
+                            <input type="text" name="username" placeholder="Nume de utilizator" class="input-field-auth" value="{{ login_form.username }}" required>
+                        </div>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input type="password" name="password" placeholder="Parolă" class="input-field-auth" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Intră în cont</button>
+                    </form>
+                </div>
+
+                <div id="register-form-container" class="hidden">
+                    <h1 class="form-main-title">Creați un cont</h1>
+                    <form method="post" action="{% url 'register' %}" class="space-y-4" id="registrationForm">
+                        {% csrf_token %}
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user input-icon"></i>
+                            {{ register_form.username }}
+                        </div>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope input-icon"></i>
+                            {{ register_form.email }}
+                        </div>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-globe input-icon"></i>
+                            {{ register_form.website_domain }}
+                        </div>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            {{ register_form.password1 }}
+                        </div>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            {{ register_form.password2 }}
+                        </div>
+                        <div class="file-upload-wrapper">
+                            <label for="file-upload-input" class="file-upload-label">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>Alegeți un fișier de confirmare...</span>
+                            </label>
+                            <input id="file-upload-input" type="file" class="hidden">
+                            <div id="file-upload-progress-container" class="hidden">
+                                <span id="file-name"></span>
+                                <div class="progress-bar-bg">
+                                    <div id="progress-bar" class="progress-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id="register-submit-btn" class="btn btn-primary disabled-btn" disabled>Creați cont</button>
+                    </form>
+                </div>
+
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const infoTitle = document.getElementById('info-title');
+        const infoText = document.getElementById('info-text');
+        const switchBtn = document.getElementById('switch-btn');
+        const loginContainer = document.getElementById('login-form-container');
+        const registerContainer = document.getElementById('register-form-container');
+        const fileInput = document.getElementById('file-upload-input');
+        const progressContainer = document.getElementById('file-upload-progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        const fileNameSpan = document.getElementById('file-name');
+        const registerBtn = document.getElementById('register-submit-btn');
+
+        const shouldShowRegister = document.body.dataset.showRegister === 'true';
+
+        const setupForms = (showRegister) => {
+            if (showRegister) {
+                loginContainer.classList.add('hidden');
+                registerContainer.classList.remove('hidden');
+                infoTitle.textContent = 'Aveți deja un cont?';
+                infoText.textContent = 'Autentificați-vă pentru a accesa panoul de control.';
+                switchBtn.textContent = 'Autentificare';
+            } else {
+                registerContainer.classList.add('hidden');
+                loginContainer.classList.remove('hidden');
+                infoTitle.textContent = 'Sunteți nou aici?';
+                infoText.textContent = 'Creați un cont pentru a începe călătoria dvs. spre conformitate.';
+                switchBtn.textContent = 'Înregistrare';
+            }
+        };
+
+        switchBtn.addEventListener('click', () => {
+            const isShowingLogin = switchBtn.textContent === 'Înregistrare';
+            setupForms(isShowingLogin);
+        });
+
+        fileInput.addEventListener('change', () => {
+             if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                fileNameSpan.textContent = fileName;
+                progressContainer.classList.remove('hidden');
+                progressBar.style.width = '0%';
+                progressBar.textContent = '';
+                registerBtn.disabled = true;
+                registerBtn.classList.add('disabled-btn');
+                let width = 0;
+                const interval = setInterval(() => {
+                    width += 10;
+                    progressBar.style.width = width + '%';
+                    if (width >= 100) {
+                        clearInterval(interval);
+                        progressBar.style.backgroundColor = '#10b981';
+                        setTimeout(() => {
+                            registerBtn.disabled = false;
+                            registerBtn.classList.remove('disabled-btn');
+                        }, 500);
+                    }
+                }, 100);
+            }
+        });
+
+        document.querySelectorAll('#registrationForm input').forEach(input => {
+            input.classList.add('input-field-auth');
+            const name = input.name.replace('_', ' ').replace('domain', '').replace('1', '').replace('2', '');
+            input.placeholder = name.charAt(0).toUpperCase() + name.slice(1).trim();
+            if (input.name === 'password2') { input.placeholder = 'Confirmare parolă'; }
+            if (input.name === 'website_domain') { input.placeholder = 'Website'; }
+        });
+        
+        setupForms(shouldShowRegister);
+    });
+</script>
+</body>
+</html>
