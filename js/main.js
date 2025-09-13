@@ -51,7 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         ro: {
             nav_dashboard: "Panou de control", nav_checklist: "Listă Conformitate", nav_reporting: "Raportare Incident", nav_killer_features: "Funcționalități Cheie", nav_marketplace: "Piața Cyber-Help", nav_risk_calculator: "Calculator de Risc", nav_vendor_chain: "Lanț de Încredere", nav_industry_shield: "Scut de Industrie", nav_training: "Cyber-Antrenament", nav_proactive_defense: "Apărare Proactivă", nav_onboarding: "Integrare Angajați", nav_policy_generator: "Generator Politici", nav_incident_drill: "Simulare Incident",
-            dashboard_title: "Panou de control Igienă Cibernetică", dashboard_subtitle: "Introduceți domeniul sau IP-ul pentru a efectua un audit de bază.", dashboard_scan_button: "Pornește Scanarea", scan_results_for: "Rezultate Audit pentru", compliance_score: "Scor de Conformitate", key_findings: "Constatări Cheie", scan_in_progress: "Scanare în desfășurare...", passport_button: "Descarcă Pașaport", passport_title: "Pașaport de Conformitate", passport_desc: "Acesta este un model al raportului PDF care va fi generat.", dynamics_title: "Dinamica Îmbunătățirilor", status_good: "Bun", status_medium: "Mediu", status_weak: "Slab", finding_recommendation: "Recomandare", find_expert_button: "Găsește Expert",
+            dashboard_title: "Panou de control Igienă Cibernetică", dashboard_subtitle: "Introduceți domeniul sau IP-ul pentru a efectua un audit de bază.", dashboard_scan_button: "Pornește Scanarea", scan_results_for: "Rezultate Audit pentru", compliance_score: "Scor de Conformitate", key_findings: "Constatări Cheie", scan_in_progress: "Scanare în desfășurare...", passport_button: "Descarcă Pașaport",
+            passport_title: "Pașaport de Conformitate", passport_subtitle: "Validare pentru", passport_issued_on: "Data emiterii", passport_overall_score: "Scor General", passport_checks_performed: "Verificări efectuate", passport_validation_text: "Documentul confirmă că la data emiterii, domeniul menționat a trecut cu succes o scanare de bază a igienei cibernetice, conform politicilor interne.", passport_validator: "Validat de",
+            dynamics_title: "Dinamica Îmbunătățirilor", status_good: "Bun", status_medium: "Mediu", status_weak: "Slab", finding_recommendation: "Recomandare", find_expert_button: "Găsește Expert",
             finding_tls_title: "Politici TLS/SSL", finding_tls_details: "TLS 1.2 & 1.3 activate. Certificat valid.", finding_tls_rec: "Dezactivați versiunile vechi de TLS (1.0, 1.1).", finding_email_auth_title: "Autentificare E-mail (SPF, DKIM)", finding_email_auth_details: "Înregistrare SPF găsită. Înregistrarea DKIM lipsește.", finding_email_auth_rec: "Configurați DKIM pentru a preveni spoofing-ul.", finding_headers_title: "Antete de Securitate Web", finding_headers_details: "Lipsește Content-Security-Policy.", finding_headers_rec: "Implementați un antet CSP strict.",
             disclaimer_title: "Notă de informare", disclaimer_text: "Scanarea domeniului public se bazează pe informații accesibile public, conform prevederilor Legii nr. 20/2023 privind securitatea cibernetică.",
             checklist_title: "Listă de Conformitate (Art. 11)", checklist_subtitle: "Evaluați nivelul de conformitate cu cerințele legale și bunele practici.", checklist_progress: "Progres Conformitate", badge_mandatory: "Obligatoriu", badge_recommended: "Recomandat", upload_evidence: "Încarcă dovadă", recommendation_title: "Recomandare:",
@@ -78,19 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ru: {
             nav_dashboard: "Панель управления", nav_checklist: "Чек-лист", nav_reporting: "Отчет об инциденте", nav_killer_features: "Ключевые функции", nav_marketplace: "Биржа Cyber-Help", nav_risk_calculator: "Калькулятор рисков", nav_vendor_chain: "Цепочка доверия", nav_industry_shield: "Отраслевой щит", nav_training: "Кибер-тренировка", nav_proactive_defense: "Проактивная защита", nav_onboarding: "Интеграция сотрудников", nav_policy_generator: "Генератор политик", nav_incident_drill: "Симуляция инцидента",
-            dashboard_title: "Панель кибергигиены", dashboard_subtitle: "Введите домен или IP для проведения базового аудита.", dashboard_scan_button: "Начать сканирование", scan_results_for: "Результаты аудита для", compliance_score: "Оценка соответствия", key_findings: "Ключевые выводы", scan_in_progress: "Идет сканирование...", passport_button: "Скачать паспорт", passport_title: "Паспорт соответствия", passport_desc: "Это образец PDF-отчета, который будет сгенерирован.", dynamics_title: "Динамика улучшений", status_good: "Хорошо", status_medium: "Средне", status_weak: "Слабо", finding_recommendation: "Рекомендация", find_expert_button: "Найти эксперта",
+            dashboard_title: "Панель кибергигиены", dashboard_subtitle: "Введите домен или IP для проведения базового аудита.", dashboard_scan_button: "Начать сканирование", scan_results_for: "Результаты аудита для", compliance_score: "Оценка соответствия", key_findings: "Ключевые выводы", scan_in_progress: "Идет сканирование...", passport_button: "Скачать паспорт",
+            passport_title: "Паспорт соответствия", passport_subtitle: "Подтверждение для", passport_issued_on: "Дата выдачи", passport_overall_score: "Общая оценка", passport_checks_performed: "Проведенные проверки", passport_validation_text: "Этот документ подтверждает, что на дату выдачи указанный домен успешно прошел базовое сканирование кибергигиены в соответствии с внутренними политиками.", passport_validator: "Подтверждено",
+            dynamics_title: "Динамика улучшений", status_good: "Хорошо", status_medium: "Средне", status_weak: "Слабо", finding_recommendation: "Рекомендация", find_expert_button: "Найти эксперта",
             finding_tls_title: "Политики TLS/SSL", finding_tls_details: "TLS 1.2 и 1.3 активны. Сертификат действителен.", finding_tls_rec: "Отключите устаревшие версии TLS (1.0, 1.1).", finding_email_auth_title: "Аутентификация почты (SPF, DKIM)", finding_email_auth_details: "Найдена запись SPF. Запись DKIM отсутствует.", finding_email_auth_rec: "Настройте DKIM для предотвращения спуфинга.", finding_headers_title: "Заголовки веб-безопасности", finding_headers_details: "Отсутствует Content-Security-Policy.", finding_headers_rec: "Внедрите строгий заголовок CSP.",
             disclaimer_title: "Информационное уведомление", disclaimer_text: "Сканирование публичного домена основано на общедоступной информации в соответствии с Законом № 20/2023 о кибербезопасности.",
             checklist_title: "Чек-лист соответствия (Ст. 11)", checklist_subtitle: "Оцените уровень соответствия законодательным требованиям и лучшим практикам.", checklist_progress: "Прогресс соответствия", badge_mandatory: "Обязательно", badge_recommended: "Рекомендовано", upload_evidence: "Загрузить доказательство", recommendation_title: "Рекомендация:",
             checklist_section_policies: "Политики безопасности", q_pol_1_text: "Существует ли утвержденная и доведенная до сведения сотрудников политика информационной безопасности?", q_pol_1_rec: "Разработайте и утвердите политику безопасности. Убедитесь, что все сотрудники ее понимают.",
-            checklist_section_risk: "Управление рисками", q_risk_1_text: "Проводится ли оценка рисков кибербезопасности не реже одного раза в год?", q_risk_1_rec: "Внедрите ежегодный процесс оценки рисков для выявления и приоритизации угроз.", q_risk_2_text: "Существует ли реестр рисков, который периодически обновляется?", q_risk_2_rec: "Создайте и поддерживайте реестр рисков для мониторинга их динамики.",
-            checklist_section_monitoring: "Непрерывный мониторинг", q_mon_1_text: "Осуществляется ли непрерывный мониторинг информационных и коммуникационных систем на предмет подозрительной активности?", q_mon_1_rec: "Внедрите решение для мониторинга (например, SIEM) для централизации и анализа событий безопасности.",
-            checklist_section_audit: "Аудит безопасности", q_aud_1_text: "Проводятся ли периодические аудиты безопасности (внутренние или внешние)?", q_aud_1_rec: "Планируйте и проводите периодические аудиты безопасности для проверки внедренных мер контроля.",
-            checklist_section_logging: "Ведение журналов (логирование)", q_log_1_text: "Собираются, централизуются и защищены ли от изменений журналы (логи) критически важных систем?", q_log_1_rec: "Настройте централизованный сбор журналов и обеспечьте их безопасное хранение.",
-            checklist_section_continuity: "Непрерывность деятельности", q_cont_1_text: "Существует ли план обеспечения непрерывности деятельности и аварийного восстановления (BCP/DRP), который периодически тестируется?", q_cont_1_rec: "Разработайте и протестируйте план BCP/DRP для обеспечения работы основных сервисов в случае крупного инцидента.",
-            checklist_section_events: "Сообщение о событиях", q_event_1_text: "Существует ли четкая процедура, по которой сотрудники могут сообщать о событиях безопасности?", q_event_1_rec: "Установите и доведите до сведения сотрудников простую процедуру сообщения об инцидентах безопасности.",
-            checklist_section_incident_plan: "План реагирования на инциденты", q_plan_1_text: "Существует ли формальный план реагирования на инциденты, определяющий роли, обязанности и шаги действий?", q_plan_1_rec: "Разработайте план реагирования на инциденты (IRP) и убедитесь, что ответственная команда обучена.",
-            checklist_section_review: "Анализ после инцидента", q_rev_1_text: "Проводится ли анализ после инцидента (post-mortem) после каждого значительного инцидента для извлечения уроков?", q_rev_1_rec: "Введите практику анализа после инцидентов для постоянного улучшения процесса реагирования.",
             reporting_title: "Отчет об инциденте (Ст. 12)", reporting_subtitle: "Используйте эту форму для уведомления о киберинциденте.", incident_timeline_title: "Хронология инцидента", incident_form_title: "Форма уведомления", export_json_button: "Экспорт в JSON (Формат Агентства)", timeline_initial: "Первичное", timeline_update: "Обновление", timeline_final: "Финальное",
             field_impact: "Предполагаемый ущерб", field_ioc: "Индикаторы компрометации (IoC)", field_systems: "Затронутые системы", field_measures: "Принятые меры по устранению", field_significant_incident: "Значительный инцидент", field_recurrent_incident: "Повторяющийся инцидент (≥2 за 6 мес.)", report_submit: "Отправить отчет",
             marketplace_title: "Биржа Cyber-Help", marketplace_subtitle: "Найдите проверенных местных экспертов.", contact_expert: "Связаться с экспертом", spec_web_sec: "Веб-безопасность", spec_backup: "Резервное копирование и восстановление", spec_net_sec: "Сетевая безопасность", spec_email_sec: "Безопасность электронной почты",
@@ -105,19 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         en: {
             nav_dashboard: "Dashboard", nav_checklist: "Compliance Checklist", nav_reporting: "Incident Reporting", nav_killer_features: "Key Features", nav_marketplace: "Cyber-Help Marketplace", nav_risk_calculator: "Risk Calculator", nav_vendor_chain: "Vendor Chain", nav_industry_shield: "Industry Shield", nav_training: "Cyber-Training", nav_proactive_defense: "Proactive Defense", nav_onboarding: "Employee Onboarding", nav_policy_generator: "Policy Generator", nav_incident_drill: "Incident Drill",
-            dashboard_title: "Cyber Hygiene Dashboard", dashboard_subtitle: "Enter your domain or IP to perform a basic audit.", dashboard_scan_button: "Start Scan", scan_results_for: "Audit Results for", compliance_score: "Compliance Score", key_findings: "Key Findings", scan_in_progress: "Scan in progress...", passport_button: "Download Passport", passport_title: "Compliance Passport", passport_desc: "This is a sample of the PDF report that will be generated.", dynamics_title: "Improvement Dynamics", status_good: "Good", status_medium: "Medium", status_weak: "Weak", finding_recommendation: "Recommendation", find_expert_button: "Find Expert",
+            dashboard_title: "Cyber Hygiene Dashboard", dashboard_subtitle: "Enter your domain or IP to perform a basic audit.", dashboard_scan_button: "Start Scan", scan_results_for: "Audit Results for", compliance_score: "Compliance Score", key_findings: "Key Findings", scan_in_progress: "Scan in progress...", passport_button: "Download Passport",
+            passport_title: "Compliance Passport", passport_subtitle: "Validation for", passport_issued_on: "Date of Issue", passport_overall_score: "Overall Score", passport_checks_performed: "Checks Performed", passport_validation_text: "This document confirms that as of the date of issue, the mentioned domain has successfully passed a basic cyber hygiene scan according to internal policies.", passport_validator: "Validated by",
+            dynamics_title: "Improvement Dynamics", status_good: "Good", status_medium: "Medium", status_weak: "Weak", finding_recommendation: "Recommendation", find_expert_button: "Find Expert",
             finding_tls_title: "TLS/SSL Policies", finding_tls_details: "TLS 1.2 & 1.3 are active. Valid certificate.", finding_tls_rec: "Disable legacy TLS versions (1.0, 1.1).", finding_email_auth_title: "Email Authentication (SPF, DKIM)", finding_email_auth_details: "SPF record found. DKIM record is missing.", finding_email_auth_rec: "Configure DKIM to prevent spoofing.", finding_headers_title: "Web Security Headers", finding_headers_details: "Content-Security-Policy is missing.", finding_headers_rec: "Implement a strict CSP header.",
             disclaimer_title: "Information Notice", disclaimer_text: "Public domain scanning is based on publicly available information, in accordance with Law no. 20/2023 on cybersecurity.",
             checklist_title: "Compliance Checklist (Art. 11)", checklist_subtitle: "Assess your compliance level with legal requirements and best practices.", checklist_progress: "Compliance Progress", badge_mandatory: "Mandatory", badge_recommended: "Recommended", upload_evidence: "Upload Evidence", recommendation_title: "Recommendation:",
-            checklist_section_policies: "Security Policies", q_pol_1_text: "Is there an approved information security policy communicated to employees?", q_pol_1_rec: "Develop and approve a security policy. Ensure it is understood by all employees.",
-            checklist_section_risk: "Risk Management", q_risk_1_text: "Is a cybersecurity risk assessment performed at least annually?", q_risk_1_rec: "Implement an annual risk assessment process to identify and prioritize threats.", q_risk_2_text: "Is there a risk register that is periodically updated?", q_risk_2_rec: "Create and maintain a risk register to monitor their evolution.",
-            checklist_section_monitoring: "Continuous Monitoring", q_mon_1_text: "Are IT and communication systems continuously monitored for suspicious activities?", q_mon_1_rec: "Implement a monitoring solution (e.g., SIEM) to centralize and analyze security events.",
-            checklist_section_audit: "Security Audits", q_aud_1_text: "Are periodic security audits (internal or external) conducted?", q_aud_1_rec: "Plan and execute periodic security audits to validate implemented controls.",
-            checklist_section_logging: "Logging", q_log_1_text: "Are logs from critical systems collected, centralized, and protected against modification?", q_log_1_rec: "Set up centralized log collection and ensure they are stored securely.",
-            checklist_section_continuity: "Business Continuity", q_cont_1_text: "Is there a business continuity and disaster recovery plan (BCP/DRP) that is periodically tested?", q_cont_1_rec: "Develop and test a BCP/DRP to ensure the operation of essential services in case of a major incident.",
-            checklist_section_events: "Event Reporting", q_event_1_text: "Is there a clear procedure for employees to report security events?", q_event_1_rec: "Establish and communicate a simple procedure for employees to report security incidents.",
-            checklist_section_incident_plan: "Incident Response Plan", q_plan_1_text: "Is there a formal incident response plan that defines roles, responsibilities, and action steps?", q_plan_1_rec: "Develop an Incident Response Plan (IRP) and ensure the responsible team is trained.",
-            checklist_section_review: "Post-Incident Review", q_rev_1_text: "Is a post-mortem analysis conducted after each significant incident to identify lessons learned?", q_rev_1_rec: "Introduce a post-incident review practice to continuously improve the response process.",
             reporting_title: "Incident Reporting (Art. 12)", reporting_subtitle: "Use this form to notify about a cybersecurity incident.", incident_timeline_title: "Incident Timeline", incident_form_title: "Notification Form", export_json_button: "Export JSON (Agency Format)", timeline_initial: "Initial", timeline_update: "Update", timeline_final: "Final",
             field_impact: "Estimated Impact", field_ioc: "Indicators of Compromise (IoC)", field_systems: "Affected System(s)", field_measures: "Remediation Measures Applied", field_significant_incident: "Significant Incident", field_recurrent_incident: "Recurrent Incident (≥2 in the last 6 months)", report_submit: "Submit Report",
             marketplace_title: "Cyber-Help Marketplace", marketplace_subtitle: "Find verified local experts.", contact_expert: "Contact Expert", spec_web_sec: "Web Security", spec_backup: "Backup & Recovery", spec_net_sec: "Network Security", spec_email_sec: "Email Security",
@@ -174,7 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('loader-container').classList.remove('hidden');
                 setTimeout(() => {
                     document.getElementById('loader-container').classList.add('hidden');
-                    displayScanResults(target, generateMockScanResults());
+                    const results = generateMockScanResults();
+                    displayScanResults(target, results);
                 }, 1500);
             });
             startScanBtn.dataset.listener = 'true';
@@ -505,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="md:col-span-1 feature-card text-center flex flex-col justify-center">
                     <p class="text-lg font-semibold" data-translate="compliance_score"></p>
                     <p class="text-6xl font-bold ${scoreColor} my-2">${results.score}%</p>
-                    <button class="btn btn-secondary mt-4 w-full"><i class="fa-solid fa-file-pdf"></i> <span data-translate="passport_button"></span></button>
+                    <button id="download-passport-btn" class="btn btn-secondary mt-4 w-full"><i class="fa-solid fa-file-pdf"></i> <span data-translate="passport_button"></span></button>
                 </div>
 
                 <div class="md:col-span-2 feature-card">
@@ -519,6 +509,12 @@ document.addEventListener('DOMContentLoaded', () => {
                  <canvas id="complianceChart"></canvas>
             </div>
         `;
+
+        // Add Passport Button Event Listener
+        document.getElementById('download-passport-btn').addEventListener('click', () => {
+            showPassportModal(target, results);
+        });
+
 
         // Render Chart
         const ctx = document.getElementById('complianceChart').getContext('2d');
@@ -546,6 +542,47 @@ document.addEventListener('DOMContentLoaded', () => {
         const score = Math.floor(Math.random() * 51) + 50;
         const findings = mockData.scanFindings.map(f => ({ ...f, status: f.status || (score > f.statusOkThreshold ? 'ok' : 'fail') }));
         return { score, findings };
+    }
+
+    function showPassportModal(target, results) {
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+
+        modalTitle.dataset.translate = 'passport_title';
+        
+        const checksHTML = results.findings.map(f => `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i> <span data-translate="${f.titleKey}"></span></li>`).join('');
+
+        modalContent.innerHTML = `
+            <div class="text-center mb-4">
+                <p class="text-sm text-gray-500" data-translate="passport_subtitle"></p>
+                <p class="text-2xl font-bold text-gray-800">${target}</p>
+            </div>
+            <div class="grid grid-cols-2 gap-6 my-6">
+                <div>
+                    <p class="text-sm font-semibold" data-translate="passport_issued_on"></p>
+                    <p>${new Date().toLocaleDateString('ro-RO')}</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm font-semibold" data-translate="passport_overall_score"></p>
+                    <p class="text-2xl font-bold ${results.score > 85 ? 'text-green-600' : 'text-yellow-600'}">${results.score}%</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-2" data-translate="passport_checks_performed"></h4>
+                <ul class="space-y-1 text-gray-700">${checksHTML}</ul>
+            </div>
+            <div class="mt-6 pt-4 border-t">
+                <p class="text-xs text-gray-600 italic text-center" data-translate="passport_validation_text"></p>
+            </div>
+            <div class="mt-8 text-center">
+                <p class="text-sm" data-translate="passport_validator"></p>
+                <p class="font-serif text-lg font-semibold">CyberCare Digital Services</p>
+            </div>
+        `;
+        
+        modal.classList.add('active');
+        setLanguage(currentLang);
     }
 
     // --- APP INITIALIZATION & EVENT LISTENERS ---
