@@ -480,7 +480,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function displayScanResults(target, results) {
-        // This function is correct from the previous version. Omitted for brevity.
+        const container = document.getElementById('scan-results-container');
+        const scoreColor = results.score > 85 ? 'text-green-600' : results.score > 60 ? 'text-yellow-600' : 'text-red-600';
+
+        let findingsHTML = results.findings.map(finding => {
+            const statusIcon = finding.status === 'ok' ? '<i class="fa-solid fa-check-circle text-green-500"></i>' : '<i class="fa-solid fa-exclamation-triangle text-red-500"></i>';
+            return `
+                <div class="p-4 border rounded-lg bg-white">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-semibold" data-translate="${finding.titleKey}"></h4>
+                        ${statusIcon}
+                    </div>
+                    <p class="text-sm text-gray-600 my-2" data-translate="${finding.detailsKey}"></p>
+                    <div class="bg-gray-50 p-3 rounded-md">
+                        <p class="text-sm font-semibold text-indigo-700"><i class="fa-solid fa-lightbulb"></i> <span data-translate="finding_recommendation"></span></p>
+                        <p class="text-sm" data-translate="${finding.recommendationKey}"></p>
+                    </div>
+                </div>`;
+        }).join('');
+
+        container.innerHTML = `
+            <h3 class="text-2xl font-bold mb-4"><span data-translate="scan_results_for"></span> <span class="text-indigo-600">${target}</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="md:col-span-1 feature-card text-center flex flex-col justify-center">
+                    <p class="text-lg font-semibold" data-translate="compliance_score"></p>
+                    <p class="text-6xl font-bold ${scoreColor} my-2">${results.score}%</p>
+                    <button class="btn btn-secondary mt-4 w-full"><i class="fa-solid fa-file-pdf"></i> <span data-translate="passport_button"></span></button>
+                </div>
+
+                <div class="md:col-span-2 feature-card">
+                    <h4 class="text-lg font-semibold mb-4" data-translate="key_findings"></h4>
+                    <div class="space-y-4">${findingsHTML}</div>
+                </div>
+            </div>
+
+            <div class="feature-card mt-6">
+                 <h4 class="text-lg font-semibold mb-4" data-translate="dynamics_title"></h4>
+                 <canvas id="complianceChart"></canvas>
+            </div>
+        `;
+
+        // Render Chart
+        const ctx = document.getElementById('complianceChart').getContext('2d');
+        if (complianceChart) {
+            complianceChart.destroy();
+        }
+        complianceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun'],
+                datasets: [{
+                    label: 'Scor',
+                    data: [65, 59, 80, 81, 76, results.score],
+                    fill: false,
+                    borderColor: 'rgb(79, 70, 229)',
+                    tension: 0.1
+                }]
+            }
+        });
+
+        setLanguage(currentLang);
     }
     
     function generateMockScanResults() {

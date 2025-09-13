@@ -58,22 +58,30 @@
             </header>
             <main>
                 <section id="dashboard" class="page-section">
-                    <h2 class="text-3xl font-bold mb-6" data-translate="dashboard_title"></h2>
-                    <div class="disclaimer-box mb-6">
-                        <p class="font-semibold"><i class="fa-solid fa-info-circle"></i> <span data-translate="disclaimer_title"></span></p>
-                        <p class="text-sm" data-translate="disclaimer_text"></p>
-                    </div>
-                    <div class="feature-card">
-                        <p class="text-gray-600 mb-4" data-translate="dashboard_subtitle"></p>
-                        <div class="flex flex-col sm:flex-row gap-2">
-                            <input id="scan-target" type="text" placeholder="exemplu.md" class="input-field flex-grow">
-                            <button id="start-scan-btn" class="btn btn-primary w-full sm:w-auto">
-                                <i class="fa-solid fa-magnifying-glass"></i><span data-translate="dashboard_scan_button"></span>
-                            </button>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="lg:col-span-1 space-y-6">
+                            <div class="feature-card">
+                                <h3 class="text-xl font-bold mb-4" data-translate="dashboard_title"></h3>
+                                <p class="text-gray-600 mb-4" data-translate="dashboard_subtitle"></p>
+                                <div class="flex flex-col sm:flex-row gap-2">
+                                    <input id="scan-target" type="text" placeholder="exemplu.md" class="input-field flex-grow">
+                                    <button id="start-scan-btn" class="btn btn-primary w-full sm:w-auto">
+                                        <i class="fa-solid fa-magnifying-glass"></i><span data-translate="dashboard_scan_button"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p class="font-semibold"><i class="fa-solid fa-info-circle"></i> <span data-translate="disclaimer_title"></span></p>
+                                <p class="text-sm" data-translate="disclaimer_text"></p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-2">
+                            <div id="loader-container" class="hidden text-center p-8"><div class="loader inline-block"></div><p class="mt-2 text-gray-600" data-translate="scan_in_progress"></p></div>
+                            <div id="scan-results-container">
+                                </div>
                         </div>
                     </div>
-                    <div id="loader-container" class="mt-8 hidden text-center"><div class="loader inline-block"></div><p class="mt-2 text-gray-600" data-translate="scan_in_progress"></p></div>
-                    <div id="scan-results-container" class="mt-8"></div>
                 </section>
 
                 <section id="checklist" class="page-section">
