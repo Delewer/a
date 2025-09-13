@@ -1,0 +1,57 @@
+[
+  {"model": "core.scanfinding", "pk": 1, "fields": {"titleKey": "finding_tls_title", "statusOkThreshold": 80, "detailsKey": "finding_tls_details", "recommendationKey": "finding_tls_rec"}},
+  {"model": "core.scanfinding", "pk": 2, "fields": {"titleKey": "finding_email_auth_title", "statusOkThreshold": 65, "detailsKey": "finding_email_auth_details", "recommendationKey": "finding_email_auth_rec"}},
+  {"model": "core.scanfinding", "pk": 3, "fields": {"titleKey": "finding_headers_title", "statusOkThreshold": null, "detailsKey": "finding_headers_details", "recommendationKey": "finding_headers_rec"}},
+  
+  {"model": "core.checklistsection", "pk": 1, "fields": {"sectionKey": "checklist_section_policies"}},
+  {"model": "core.checklistsection", "pk": 2, "fields": {"sectionKey": "checklist_section_risk"}},
+  {"model": "core.checklistsection", "pk": 3, "fields": {"sectionKey": "checklist_section_monitoring"}},
+  {"model": "core.checklistsection", "pk": 4, "fields": {"sectionKey": "checklist_section_audit"}},
+  {"model": "core.checklistsection", "pk": 5, "fields": {"sectionKey": "checklist_section_logging"}},
+  {"model": "core.checklistsection", "pk": 6, "fields": {"sectionKey": "checklist_section_continuity"}},
+  {"model": "core.checklistsection", "pk": 7, "fields": {"sectionKey": "checklist_section_events"}},
+  {"model": "core.checklistsection", "pk": 8, "fields": {"sectionKey": "checklist_section_incident_plan"}},
+  {"model": "core.checklistsection", "pk": 9, "fields": {"sectionKey": "checklist_section_review"}},
+
+  {"model": "core.checklistquestion", "pk": 1, "fields": {"section": 1, "question_id": "q_pol_1", "textKey": "q_pol_1_text", "law": "Art. 11 lit. a)", "question_type": "mandatory", "recKey": "q_pol_1_rec"}},
+  {"model": "core.checklistquestion", "pk": 2, "fields": {"section": 2, "question_id": "q_risk_1", "textKey": "q_risk_1_text", "law": "Art. 11 lit. b)", "question_type": "mandatory", "recKey": "q_risk_1_rec"}},
+  {"model": "core.checklistquestion", "pk": 3, "fields": {"section": 2, "question_id": "q_risk_2", "textKey": "q_risk_2_text", "law": "Art. 11 lit. b)", "question_type": "recommended", "recKey": "q_risk_2_rec"}},
+  {"model": "core.checklistquestion", "pk": 4, "fields": {"section": 3, "question_id": "q_mon_1", "textKey": "q_mon_1_text", "law": "Art. 11 lit. c)", "question_type": "mandatory", "recKey": "q_mon_1_rec"}},
+  {"model": "core.checklistquestion", "pk": 5, "fields": {"section": 4, "question_id": "q_aud_1", "textKey": "q_aud_1_text", "law": "Art. 11 lit. d)", "question_type": "mandatory", "recKey": "q_aud_1_rec"}},
+  {"model": "core.checklistquestion", "pk": 6, "fields": {"section": 5, "question_id": "q_log_1", "textKey": "q_log_1_text", "law": "Art. 11 lit. e)", "question_type": "mandatory", "recKey": "q_log_1_rec"}},
+  {"model": "core.checklistquestion", "pk": 7, "fields": {"section": 6, "question_id": "q_cont_1", "textKey": "q_cont_1_text", "law": "Art. 11 lit. f)", "question_type": "mandatory", "recKey": "q_cont_1_rec"}},
+  {"model": "core.checklistquestion", "pk": 8, "fields": {"section": 7, "question_id": "q_event_1", "textKey": "q_event_1_text", "law": "Art. 11 lit. g)", "question_type": "mandatory", "recKey": "q_event_1_rec"}},
+  {"model": "core.checklistquestion", "pk": 9, "fields": {"section": 8, "question_id": "q_plan_1", "textKey": "q_plan_1_text", "law": "Art. 11 lit. h)", "question_type": "mandatory", "recKey": "q_plan_1_rec"}},
+  {"model": "core.checklistquestion", "pk": 10, "fields": {"section": 9, "question_id": "q_rev_1", "textKey": "q_rev_1_text", "law": "Art. 11 lit. i)", "question_type": "mandatory", "recKey": "q_rev_1_rec"}},
+  
+  {"model": "core.expert", "pk": 1, "fields": {"name": "SecureIT Solutions", "specKey": "spec_web_sec", "rating": 4.8}},
+  {"model": "core.expert", "pk": 2, "fields": {"name": "DataProtect SRL", "specKey": "spec_backup", "rating": 4.9}},
+  {"model": "core.expert", "pk": 3, "fields": {"name": "InfraGuard", "specKey": "spec_net_sec", "rating": 4.7}},
+  {"model": "core.expert", "pk": 4, "fields": {"name": "MailFortress", "specKey": "spec_email_sec", "rating": 5.0}},
+  
+  {"model": "core.industry", "pk": 1, "fields": {"key": "industry_retail", "name": "Retail"}},
+  {"model": "core.industry", "pk": 2, "fields": {"key": "industry_it", "name": "IT"}},
+  {"model": "core.industry", "pk": 3, "fields": {"key": "industry_agri", "name": "Agricultură"}},
+  {"model": "core.industry", "pk": 4, "fields": {"key": "industry_const", "name": "Construcții"}},
+
+  {"model": "core.vendor", "pk": 1, "fields": {"name": "Contabilitate SRL", "status": "green"}},
+  {"model": "core.vendor", "pk": 2, "fields": {"name": "IT Service Grup", "status": "green"}},
+  {"model": "core.vendor", "pk": 3, "fields": {"name": "Marketing Agency", "status": "yellow"}},
+  {"model": "core.vendor", "pk": 4, "fields": {"name": "Courier Service", "status": "red"}},
+
+  {"model": "core.alert", "pk": 1, "fields": {"titleKey": "alert1_title", "dateKey": "alert_date_2h"}},
+  {"model": "core.alert", "pk": 2, "fields": {"titleKey": "alert2_title", "dateKey": "alert_date_1d"}},
+
+  {"model": "core.trainingquestion", "pk": 1, "fields": {"questionKey": "training_q1", "optionsKeys": ["training_q1_opt1", "training_q1_opt2", "training_q1_opt3"], "correct": 1}},
+  {"model": "core.trainingquestion", "pk": 2, "fields": {"questionKey": "training_q2", "optionsKeys": ["training_q2_opt1", "training_q2_opt2", "training_q2_opt3"], "correct": 1}},
+
+  {"model": "core.employee", "pk": 1, "fields": {"name": "Ion Popescu", "status": "completed", "date": "2025-08-15"}},
+  {"model": "core.employee", "pk": 2, "fields": {"name": "Maria Ionescu", "status": "pending", "date": "-"}},
+
+  {"model": "core.policy", "pk": 1, "fields": {"titleKey": "policy_pass_title", "icon": "fa-key"}},
+  {"model": "core.policy", "pk": 2, "fields": {"titleKey": "policy_net_title", "icon": "fa-wifi"}},
+  {"model": "core.policy", "pk": 3, "fields": {"titleKey": "policy_incident_title", "icon": "fa-file-medical"}},
+
+  {"model": "core.drillstep", "pk": 1, "fields": {"titleKey": "drill_step1_title", "questionKey": "drill_step1_q", "optionsKeys": ["drill_step1_opt1", "drill_step1_opt2"], "inputPlaceholderKey": null}},
+  {"model": "core.drillstep", "pk": 2, "fields": {"titleKey": "drill_step2_title", "questionKey": "drill_step2_q", "optionsKeys": null, "inputPlaceholderKey": "drill_step2_placeholder"}}
+]
