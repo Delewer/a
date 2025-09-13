@@ -1,53 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => { // Make function async
     // --- APP STATE ---
     let currentLang = localStorage.getItem('language') || 'ro';
     let complianceChart = null;
     let currentTrainingQuestion = null;
+    let mockData = {};
 
-    // --- MOCK DATA STORE ---
-    const mockData = {
-        scanFindings: [
-            { titleKey: 'finding_tls_title', statusOkThreshold: 80, detailsKey: 'finding_tls_details', recommendationKey: 'finding_tls_rec' },
-            { titleKey: 'finding_email_auth_title', statusOkThreshold: 65, detailsKey: 'finding_email_auth_details', recommendationKey: 'finding_email_auth_rec' },
-            { titleKey: 'finding_headers_title', status: 'warn', detailsKey: 'finding_headers_details', recommendationKey: 'finding_headers_rec' },
-        ],
-        checklist: [
-            { sectionKey: "checklist_section_policies", questions: [{ id: 'q_pol_1', textKey: 'q_pol_1_text', law: 'Art. 11 lit. a)', type: 'mandatory', recKey: 'q_pol_1_rec' }] },
-            { sectionKey: "checklist_section_risk", questions: [{ id: 'q_risk_1', textKey: 'q_risk_1_text', law: 'Art. 11 lit. b)', type: 'mandatory', recKey: 'q_risk_1_rec' }, { id: 'q_risk_2', textKey: 'q_risk_2_text', law: 'Art. 11 lit. b)', type: 'recommended', recKey: 'q_risk_2_rec' }] },
-            { sectionKey: "checklist_section_monitoring", questions: [{ id: 'q_mon_1', textKey: 'q_mon_1_text', law: 'Art. 11 lit. c)', type: 'mandatory', recKey: 'q_mon_1_rec' }] },
-            { sectionKey: "checklist_section_audit", questions: [{ id: 'q_aud_1', textKey: 'q_aud_1_text', law: 'Art. 11 lit. d)', type: 'mandatory', recKey: 'q_aud_1_rec' }] },
-            { sectionKey: "checklist_section_logging", questions: [{ id: 'q_log_1', textKey: 'q_log_1_text', law: 'Art. 11 lit. e)', type: 'mandatory', recKey: 'q_log_1_rec' }] },
-            { sectionKey: "checklist_section_continuity", questions: [{ id: 'q_cont_1', textKey: 'q_cont_1_text', law: 'Art. 11 lit. f)', type: 'mandatory', recKey: 'q_cont_1_rec' }] },
-            { sectionKey: "checklist_section_events", questions: [{ id: 'q_event_1', textKey: 'q_event_1_text', law: 'Art. 11 lit. g)', type: 'mandatory', recKey: 'q_event_1_rec' }] },
-            { sectionKey: "checklist_section_incident_plan", questions: [{ id: 'q_plan_1', textKey: 'q_plan_1_text', law: 'Art. 11 lit. h)', type: 'mandatory', recKey: 'q_plan_1_rec' }] },
-            { sectionKey: "checklist_section_review", questions: [{ id: 'q_rev_1', textKey: 'q_rev_1_text', law: 'Art. 11 lit. i)', type: 'mandatory', recKey: 'q_rev_1_rec' }] }
-        ],
-        experts: [
-            { name: 'SecureIT Solutions', specKey: 'spec_web_sec', rating: 4.8 }, { name: 'DataProtect SRL', specKey: 'spec_backup', rating: 4.9 },
-            { name: 'InfraGuard', specKey: 'spec_net_sec', rating: 4.7 }, { name: 'MailFortress', specKey: 'spec_email_sec', rating: 5.0 },
-        ],
-        industries: [
-            { key: 'industry_retail', name: 'Retail' }, { key: 'industry_it', name: 'IT' }, 
-            { key: 'industry_agri', name: 'Agricultură' }, { key: 'industry_const', name: 'Construcții' }
-        ],
-        vendors: [
-            { name: 'Contabilitate SRL', status: 'green' }, { name: 'IT Service Grup', status: 'green' },
-            { name: 'Marketing Agency', status: 'yellow' }, { name: 'Courier Service', status: 'red' }
-        ],
-        alerts: [
-            { titleKey: 'alert1_title', dateKey: 'alert_date_2h' },
-            { titleKey: 'alert2_title', dateKey: 'alert_date_1d' },
-        ],
-        trainingQuestions: [
-            { questionKey: 'training_q1', optionsKeys: ['training_q1_opt1', 'training_q1_opt2', 'training_q1_opt3'], correct: 1 },
-            { questionKey: 'training_q2', optionsKeys: ['training_q2_opt1', 'training_q2_opt2', 'training_q2_opt3'], correct: 1 },
-        ],
-        employees: [ { name: 'Ion Popescu', status: 'completed', date: '2025-08-15' }, { name: 'Maria Ionescu', status: 'pending', date: '-' } ],
-        policies: [ { titleKey: 'policy_pass_title', icon: 'fa-key' }, { titleKey: 'policy_net_title', icon: 'fa-wifi' }, { titleKey: 'policy_incident_title', icon: 'fa-file-medical' } ],
-        drillSteps: [ { titleKey: 'drill_step1_title', questionKey: 'drill_step1_q', optionsKeys: ['drill_step1_opt1', 'drill_step1_opt2'] }, { titleKey: 'drill_step2_title', questionKey: 'drill_step2_q', inputPlaceholderKey: 'drill_step2_placeholder' } ]
-    };
-
-    // --- DICTIONARIES AND TRANSLATIONS ---
+    // --- FETCH DATA FROM DJANGO BACKEND ---
+    try {
+        const response = await fetch('/api/data/'); // API endpoint
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        mockData = await response.json();
+    } catch (error) {
+        console.error("Failed to load data from server:", error);
+        // Optionally display an error message to the user
+        const mainContent = document.querySelector('main');
+        if (mainContent) {
+            mainContent.innerHTML = `<div class="text-center p-8 text-red-600">
+                <h2 class="text-2xl font-bold">Eroare de Conectare</h2>
+                <p>Nu s-au putut încărca datele de pe server. Vă rugăm să reîncărcați pagina.</p>
+            </div>`;
+        }
+        return; // Stop execution if data fails to load
+    }
+    
+    // --- DICTIONARIES AND TRANSLATIONS (This remains the same) ---
     const translations = {
         ro: {
             nav_dashboard: "Panou de control", nav_checklist: "Listă Conformitate", nav_reporting: "Raportare Incident", nav_killer_features: "Funcționalități Cheie", nav_marketplace: "Piața Cyber-Help", nav_risk_calculator: "Calculator de Risc", nav_vendor_chain: "Lanț de Încredere", nav_industry_shield: "Scut de Industrie", nav_training: "Cyber-Antrenament", nav_proactive_defense: "Apărare Proactivă", nav_onboarding: "Integrare Angajați", nav_policy_generator: "Generator Politici", nav_incident_drill: "Simulare Incident",
@@ -121,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // --- CORE APP LOGIC ---
+    // --- CORE APP LOGIC (This remains the same) ---
     const setLanguage = (lang) => {
         currentLang = lang;
         localStorage.setItem('language', lang);
@@ -152,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // --- PAGE-SPECIFIC LOGIC & INITIALIZERS ---
+    // --- PAGE-SPECIFIC LOGIC & INITIALIZERS (This remains the same) ---
     const pageInitializers = {
         dashboard: () => {
             const startScanBtn = document.getElementById('start-scan-btn');
@@ -455,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     };
 
-    // --- HELPER FUNCTIONS ---
+    // --- HELPER FUNCTIONS (This remains the same) ---
     function renderTrainingQuestion() {
         const trainingCard = document.getElementById('training-card');
         currentTrainingQuestion = mockData.trainingQuestions[Math.floor(Math.random() * mockData.trainingQuestions.length)];
@@ -585,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setLanguage(currentLang);
     }
 
-    // --- APP INITIALIZATION & EVENT LISTENERS ---
+    // --- APP INITIALIZATION & EVENT LISTENERS (This remains the same) ---
     const modal = document.getElementById('modal');
     router();
     setLanguage(currentLang);

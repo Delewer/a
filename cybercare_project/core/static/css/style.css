@@ -110,3 +110,177 @@ label { font-weight: 500; color: var(--text-color-dark); }
     .sidebar-overlay { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 39; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
     .sidebar-overlay.is-open { opacity: 1; visibility: visible; }
 }
+
+/* --- LOGIN PAGE STYLES --- */
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Styles for Django Messages */
+.messages .alert {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.messages .alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.messages .alert-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* --- UPDATED LOGIN PAGE STYLES --- */
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 2rem 2.5rem 2.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.login-header .logo-icon {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin-bottom: 1.5rem;
+}
+
+.messages .alert {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.btn-primary.disabled-btn {
+    background-color: #a5b4fc;
+    cursor: not-allowed;
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* File Upload Simulation Styles */
+.file-upload-wrapper { margin-top: 1rem; }
+.file-upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px dashed var(--border-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: #f9fafb;
+}
+.file-upload-label:hover {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color-light);
+    color: var(--primary-color);
+}
+#file-upload-progress-container {
+    margin-top: 0.75rem;
+}
+#file-name {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-color-medium);
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.progress-bar-bg {
+    width: 100%;
+    background-color: var(--border-color);
+    border-radius: 99px;
+    height: 12px;
+}
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #10b981;
+    border-radius: 99px;
+    transition: width 0.2s ease-out, background-color 0.3s;
+    font-size: 9px;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Django Form Improvements */
+.form-field-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.form-field-wrapper label {
+    margin-bottom: 0.25rem;
+}
+#registrationForm > p {
+    margin: 0;
+}
+.form-errors {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+}
+.form-errors p {
+    margin: 0;
+}
